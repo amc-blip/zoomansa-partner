@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주만사 | 빈 주차면 수익 계산·상담</title>
+<meta name="description" content="동네와 면수만 넣으면 예상 월 수익이 바로 나옵니다. 판매·CS·정산은 주만사가 맡습니다.">
+<meta property="og:title" content="주만사 | 비어 있는 주차면, 한 달에 얼마가 될까요?">
+<meta property="og:description" content="동네와 면수만 넣으면 예상 월 수익이 바로 나옵니다. 판매·CS·정산은 주만사가 맡습니다.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#5b2a82">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABKCAMAAADEzFl9AAAAwFBMVEXg5eejrdMrMVpaahxUYKJjoUwtIiq106I1TiYcUVphkTqloQfPvADe1AM5nG94iMCEumolecAhmLUjistEMVoAAAD+6AB5WKEfquIhreUqS51OoTRMnjL9/f3cyQBvUZQiq9BKNmMlcLkdotetxBEIGCMScJUwUZtlSogMTGcalsgjbrc4VKONmskaGAkOWXcWgaw3TqCVhgDC2rAJIjIakb9zsVepzZUcJRIaKUgSZIYrJwBaQXhIWKVhokCRuRu5y9+/AAAAQHRSTlP///////////////////////////8A////////////////////////////////////////////////////////BE+NBQAAAstJREFUeNqt1wl3ojAQAOBYr1p77ZFCjEcrgkeVanW1q1X//7/akAAGhMGJO09e1CffywyTIISGsfu876KjeXc4VMtfIUHU4Hdf0PFw5G3Og6OtW+UXA0o50uK3sXVvQHV5W4+70Po0oAbRnNS8OC9LyzealXLWm2X9Wb7l0uoaJ8iXHRlV+UlYO8MExSukOh2Z6hcxqNYgLNI6ojobeS0J/iIOomtXjy0SfKwSdLkG8cWLUwySbPMD2hqcGqGetMS8mmYJitDqJduV0Bo2wVOD1tPXkRo0QzQQRT3Lb4JebaKbIR74RmjLtfymLNfjg0GtzkOt7R22GfQheuuHe04Z2QwZ1m28F/rFC+kIpMcf9T1abGJwzx45z5tX9fEnTVpwNF7zgzEXY33YQExcirA+GLNZfCQH5sQ/u8Ra2ZC1wlhjKEHnRF1gzROzSM1rov+y0BozwHIoxoITpBhrnq60Pq8JxVhzBlhpCrbGDLAcirEwtSqw5hmTyW6GQmvMAMuhGAubIGB52QVXbx0XY3kMsHKoHAver/LKkml5uU0VJEgxlscAKy/BbMsswUzLs1ELB7I8BlhAghmWxwALptKWca3OLS/7VmMX1+rM8hhgFSSYsuZQgn+Kb36atc29nYrjAkqzGjZg2RRjba9MULO20F+Gy6jIarz++vHe7/fDIzn0K2/58dtPWeP3RSs/rIIY6f/lhgDUWljF8R1bNxDVsi6JUWhF1HRqTCmM0L/qnCfxNEJKU4MEVdQCSxVrFj6gLgypYGLElSfto6e3mUmCMoSlqlWKHysrhpR1Q4lK8fS0WzKkRF8oa59l4ShRMKKuHOmcFczCW8NUvaaGlPVGiWqvKUlNC01ZrugvdW6FXEn1tL5vVWalJ+MEg5YI1uPQdA2mWlXuE/+B6tWi/et6SttXNWlvQI2S945VazgUhauMesgYfdei/f4fUFsFq+QNVpQAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABKCAMAAADEzFl9AAAAwFBMVEXg5eejrdMrMVpaahxUYKJjoUwtIiq106I1TiYcUVphkTqloQfPvADe1AM5nG94iMCEumolecAhmLUjistEMVoAAAD+6AB5WKEfquIhreUqS51OoTRMnjL9/f3cyQBvUZQiq9BKNmMlcLkdotetxBEIGCMScJUwUZtlSogMTGcalsgjbrc4VKONmskaGAkOWXcWgaw3TqCVhgDC2rAJIjIakb9zsVepzZUcJRIaKUgSZIYrJwBaQXhIWKVhokCRuRu5y9+/AAAAQHRSTlP///////////////////////////8A////////////////////////////////////////////////////////BE+NBQAAAstJREFUeNqt1wl3ojAQAOBYr1p77ZFCjEcrgkeVanW1q1X//7/akAAGhMGJO09e1CffywyTIISGsfu876KjeXc4VMtfIUHU4Hdf0PFw5G3Og6OtW+UXA0o50uK3sXVvQHV5W4+70Po0oAbRnNS8OC9LyzealXLWm2X9Wb7l0uoaJ8iXHRlV+UlYO8MExSukOh2Z6hcxqNYgLNI6ojobeS0J/iIOomtXjy0SfKwSdLkG8cWLUwySbPMD2hqcGqGetMS8mmYJitDqJduV0Bo2wVOD1tPXkRo0QzQQRT3Lb4JebaKbIR74RmjLtfymLNfjg0GtzkOt7R22GfQheuuHe04Z2QwZ1m28F/rFC+kIpMcf9T1abGJwzx45z5tX9fEnTVpwNF7zgzEXY33YQExcirA+GLNZfCQH5sQ/u8Ra2ZC1wlhjKEHnRF1gzROzSM1rov+y0BozwHIoxoITpBhrnq60Pq8JxVhzBlhpCrbGDLAcirEwtSqw5hmTyW6GQmvMAMuhGAubIGB52QVXbx0XY3kMsHKoHAver/LKkml5uU0VJEgxlscAKy/BbMsswUzLs1ELB7I8BlhAghmWxwALptKWca3OLS/7VmMX1+rM8hhgFSSYsuZQgn+Kb36atc29nYrjAkqzGjZg2RRjba9MULO20F+Gy6jIarz++vHe7/fDIzn0K2/58dtPWeP3RSs/rIIY6f/lhgDUWljF8R1bNxDVsi6JUWhF1HRqTCmM0L/qnCfxNEJKU4MEVdQCSxVrFj6gLgypYGLElSfto6e3mUmCMoSlqlWKHysrhpR1Q4lK8fS0WzKkRF8oa59l4ShRMKKuHOmcFczCW8NUvaaGlPVGiWqvKUlNC01ZrugvdW6FXEn1tL5vVWalJ+MEg5YI1uPQdA2mWlXuE/+B6tWi/et6SttXNWlvQI2S945VazgUhauMesgYfdei/f4fUFsFq+QNVpQAAAAASUVORK5CYII=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap&text=%2B%2C.0123456789%3F~%EA%B0%80%EA%B0%9C%EA%B3%84%EA%B4%80%EA%B9%8C%EB%8A%94%EB%8B%88%EB%8B%A4%EB%8B%A8%EB%8B%AC%EB%90%90%EB%90%A0%EB%9F%B0%EB%A3%8C%EB%A6%AC%EB%A7%88%EB%A7%8C%EB%A7%A4%EB%A9%B4%EB%AC%B4%EB%B9%84%EC%82%AC%EC%82%B0%EC%83%81%EC%88%98%EC%8A%B5%EC%8B%A0%EC%96%B4%EC%96%BC%EC%97%90%EC%98%81%EC%98%88%EC%9A%94%EC%9A%B4%EC%9B%90%EC%9B%94%EC%9D%84%EC%9D%B4%EC%9D%B5%EC%9E%85%EC%9E%88%EC%A0%91%EC%A3%BC%EC%A7%84%EC%B0%A8%EC%B2%AD%EC%B6%9C%ED%8C%80%ED%95%9C%ED%95%A9%ED%9A%8C" rel="stylesheet">
+<style>
+:root{
+--asphalt:#5b2a82; --asphalt2:#47206a; --concrete:#f5f3f8; --paint:#ffffff;
+--yellow:#ffe100; --blue:#5b2a82; --blue-d:#47206a; --ink:#1f1a26; --muted:#5f5869; --rule:#e2dcea;
+--soft:#e4d9ef; --line2:rgba(255,255,255,.2); --line3:rgba(255,255,255,.45);
+--display:"Black Han Sans","Noto Sans KR","Noto Sans CJK KR",sans-serif;
+--body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR","Noto Sans CJK KR",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);font-size:16px;line-height:1.65;color:var(--ink);background:var(--concrete);-webkit-font-smoothing:antialiased;word-break:keep-all}
+.wrap{max-width:680px;margin:0 auto;padding:0 20px}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+
+.hero{background:var(--asphalt);color:var(--paint);padding:28px 0 8px;overflow:hidden}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px}
+.zmark{width:34px;height:34px;border-radius:8px;background:#fff;display:grid;place-items:center}
+.zmark img{width:24px;height:24px;display:block}
+.brand small{font-weight:500;font-size:12.5px;color:var(--soft);border-left:1px solid var(--line2);padding-left:10px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:40px;line-height:1.18;letter-spacing:-.01em;margin:30px 0 14px}
+.hero p{margin:0;color:var(--soft);font-size:16px;max-width:30em}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin:24px 0 34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;font:inherit;font-weight:700;font-size:15.5px;padding:13px 20px;border-radius:8px;text-decoration:none;cursor:pointer;border:0}
+.btn-yellow{background:var(--yellow);color:var(--asphalt)}
+.btn-line{background:transparent;color:var(--paint);border:1.5px solid var(--line3)}
+.btn-blue{background:var(--blue);color:#fff;width:100%}
+.btn-blue:hover{background:var(--blue-d)}
+
+.lot{display:flex;height:96px;border-top:3px solid var(--paint);margin:0 -20px}
+.stall{flex:1 0 64px;border-right:3px solid var(--paint);position:relative;display:grid;place-items:center}
+.stall:first-child{border-left:3px solid var(--paint)}
+.car{width:40px;height:66px;border-radius:9px 9px 7px 7px;background:#7b55a0;position:relative}
+.car:before{content:"";position:absolute;left:6px;right:6px;top:12px;height:15px;border-radius:4px;background:#6a4590}
+.stall.open .tag{font-family:var(--display);color:var(--yellow);font-size:15px;border:2px dashed var(--yellow);border-radius:6px;padding:4px 7px;line-height:1}
+@media(min-width:640px){.hero h1{font-size:52px}}
+
+section{padding:44px 0 0}
+h2{font-family:var(--display);font-weight:400;font-size:28px;line-height:1.25;margin:0 0 8px}
+.lede{color:var(--muted);margin:0 0 20px}
+.panel{background:#fff;border-radius:14px;padding:22px 20px;border:1px solid var(--rule)}
+label{display:block;font-weight:700;font-size:14.5px;margin:16px 0 7px}
+.req{color:#c53030;font-weight:500}
+input,select,textarea{width:100%;font:inherit;font-size:16px;padding:12px 13px;border:1.5px solid #cfc6da;border-radius:8px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(91,42,130,.18)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{margin:0;font-weight:500;font-size:14.5px;padding:8px 14px;border:1.5px solid #cfc6da;border-radius:8px;background:#fff;cursor:pointer;user-select:none}
+.chips label{position:relative}
+.chips input{position:absolute;left:0;top:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
+html,body{overflow-x:hidden;max-width:100%}
+.two>div,.sig>div{min-width:0}
+input,select,textarea{min-width:0;max-width:100%}
+.chips label.on{background:var(--asphalt);border-color:var(--asphalt);color:var(--paint)}
+.chips label:focus-within{outline:3px solid var(--yellow);outline-offset:1px}
+
+#calc .panel{padding-bottom:24px}
+.ac{position:relative}
+.ac ul{position:absolute;z-index:5;left:0;right:0;top:calc(100% + 4px);margin:0;padding:4px;list-style:none;background:#fff;border:1.5px solid var(--asphalt);border-radius:8px;max-height:280px;overflow:auto;display:none}
+.ac ul.show{display:block}
+.ac li{padding:10px 10px;border-radius:6px;cursor:pointer;display:flex;justify-content:space-between;gap:10px;font-size:15px}
+.ac li:hover,.ac li.act{background:var(--concrete)}
+.ac li small{color:var(--muted);white-space:nowrap}
+.result{margin-top:22px;background:var(--asphalt);color:var(--paint);border-radius:12px;padding:20px}
+.result .hint{color:var(--soft);margin:0}
+.r-cond{color:var(--soft);font-size:14px;margin:0}
+.r-num{font-family:var(--display);font-size:clamp(32px,9.5vw,44px);line-height:1.1;color:var(--yellow);margin:6px 0 2px;letter-spacing:-.01em}
+.r-num span{font-family:var(--body);font-size:16px;color:var(--paint);font-weight:500;margin-left:4px}
+.r-basis{font-size:13px;color:#cdbbe0;margin:0}
+.minilot{display:grid;grid-template-columns:repeat(auto-fill,minmax(16px,1fr));gap:4px;margin:16px 0 8px}
+.minilot i{display:block;height:26px;border:1.5px solid var(--line3);border-radius:3px}
+.minilot i.s{background:var(--yellow);border-color:var(--yellow)}
+.minilot i.m{background:repeating-linear-gradient(135deg,var(--yellow) 0 3px,transparent 3px 6px);border-color:var(--yellow)}
+.lot-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--soft);margin:0}
+.lot-legend b{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line2);margin-top:16px}
+.facts div{padding:12px 0 0;font-size:13px;color:var(--soft)}
+.facts div+div{padding-left:14px;border-left:1px solid var(--line2)}
+.facts strong{display:block;font-size:17px;color:var(--paint);font-weight:700}
+.subsidy{margin:14px 0 0;padding:11px 13px;border-radius:8px;background:rgba(255,255,255,.1);font-size:14px;color:var(--paint)}
+.result .btn{margin-top:16px;background:var(--yellow);color:var(--ink)}
+.result .btn:hover{background:#fff176}
+.fine{color:var(--muted);font-size:12.5px;margin:12px 0 0;line-height:1.6}
+@media (prefers-reduced-motion:no-preference){ .minilot i{transition:background .25s ease,border-color .25s ease} }
+
+.board{display:grid;grid-template-columns:1fr 1fr;background:var(--asphalt);border-radius:12px;color:var(--paint);overflow:hidden}
+.board div{padding:18px 16px;border-bottom:1px solid var(--line2)}
+.board div:nth-child(odd){border-right:1px solid var(--line2)}
+.board div:nth-last-child(-n+2){border-bottom:0}
+.board strong{display:block;font-family:var(--display);font-weight:400;font-size:28px;line-height:1.2;color:var(--yellow)}
+.board span{font-size:13px;color:var(--soft)}
+@media(min-width:640px){
+.board{grid-template-columns:repeat(4,1fr)}
+.board div{border-bottom:0;border-right:1px solid var(--line2)}
+.board div:last-child{border-right:0}
+}
+.creds{list-style:none;margin:18px 0 0;padding:0}
+.creds li{padding:11px 0 11px 30px;border-bottom:1px solid var(--rule);position:relative}
+.creds li:before{content:"";position:absolute;left:2px;top:17px;width:14px;height:8px;border-left:3px solid var(--blue);border-bottom:3px solid var(--blue);transform:rotate(-45deg)}
+.roles-title{font-size:18px;font-weight:700;margin:30px 0 10px;padding-left:12px;border-left:4px solid var(--blue);line-height:1.3}
+.roles{margin:0;display:grid;gap:0;border-top:2px solid var(--blue)}
+.roles div{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.roles b{font-weight:700;font-size:15.5px;color:var(--blue)}
+.roles p{margin:0;color:var(--muted);font-size:15px}
+.roles div{grid-template-columns:118px 1fr;align-items:baseline}
+.case{margin-top:18px;background:#fff;border:1px solid var(--rule);border-left:4px solid var(--blue);border-radius:8px;padding:14px 16px;font-size:15px}
+.case b{display:block;font-size:13px;color:var(--blue);margin-bottom:2px}
+
+.flow{list-style:none;margin:0;padding:0;counter-reset:f}
+.flow li{counter-increment:f;display:grid;grid-template-columns:44px 1fr;align-items:start;padding:12px 0;border-bottom:1px dashed #b9bcb6}
+.flow li:last-child{border-bottom:0}
+.flow li:before{content:counter(f);font-family:var(--display);font-size:22px;width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;line-height:1}
+.flow b{display:block}
+.flow span{color:var(--muted);font-size:14.5px}
+
+.prefill{display:none;background:#fff6dc;border:1px solid #f0d78a;border-radius:8px;padding:11px 13px;font-size:14px;margin-bottom:4px}
+.prefill.show{display:block}
+.agree{display:flex;gap:9px;align-items:flex-start;font-weight:500;font-size:14px;margin-top:18px}
+.agree input{width:18px;height:18px;margin-top:3px;flex:0 0 18px}
+details{font-size:13px;color:var(--muted);margin-top:6px}
+.submit{margin-top:18px;font-size:16.5px;padding:15px}
+.submit:disabled{opacity:.6;cursor:wait}
+.err{color:#c53030;font-size:14px;margin-top:10px;min-height:1em}
+.done{display:none;text-align:left;padding:8px 0}
+.done.show{display:block}
+.done h3{font-family:var(--display);font-weight:400;font-size:26px;margin:0 0 6px}
+.hp{position:absolute;left:-9999px}
+footer{margin-top:52px;background:#fff;border-top:1px solid var(--rule);color:var(--ink)}
+.sig{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px 20px 24px}
+.sig p{margin:0}
+.sig-name{font-size:18px;font-weight:700;margin-bottom:2px}
+.sig-name b{color:#7a45c2}
+.sig-co{font-size:14.5px;margin-bottom:12px}
+.sig-meta{font-size:14px;line-height:1.75}
+.sig-meta b{color:#7a45c2}
+.sig-meta a{color:var(--ink)}
+.sig-meta .nb{display:inline-block;margin-right:12px}
+.sig-z{width:64px;height:auto;flex:0 0 64px}
+.sig-bar{height:10px;background:#8a68b8}
+@media(max-width:480px){.sig{align-items:flex-start}.sig-z{width:48px;flex-basis:48px}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<div class="brand"><span class="zmark"><img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA3CAMAAABuDnn5AAAAkFBMVEUAAAB4WKH75wAfq+MqTJ5NnzH3+fhIM2D95wD61gA8pG1ZKFmVsRYEX28Lb6Acj7RkrVQWLGkXbJUNUW8VNVGDX66lzJMVo+JnYACXpM4bNmNgbRJlZWUTGBobPpcamssA4/sxUyEKRmAsSpIRh69eZA5bSpB6jMLNugAoHTUlKEoAAP8ffz80VyALTmoZjr7IC2SEAAAAMHRSTlMB/v7+/v3/nJ0L/gX4DRv5/Q9aRkn8/wUF/+bsAlX/Rwrd2qEpVRv/8ZCSAQSLnkFNf+SrAAABrklEQVR42q3WiY6CMBAG4L8qdVWO6iLe53q7677/221bQNC0dCA7iTExfPmnMxAEMAWOi0uLUr7nCW+HtKRbkFQLXla5pKWpuEJ+S+jXcULor6NKrOFEwjlPsm79Go7rUnJHDEz7TFLIZbsL9GrMBQUUJJjPs5To4Xih7yE7I/dUq+5DlvaXPAN/3LDktIRI1zF17OPFPUsFYuXXdjsstbTf5EYmiscD+DBVS/RF/72i6IFtKntTGGvYaZtqrx+NvHrvJX8zuxEqK7C5fbULEUb/mrdpmLfBxOGMrP1b7Sr6rHSThn0GWEXN+gxsew+r3WfbsneXa7T3EEHD+yW2uW2jPkNXnxY3x6HaxQ3PZ9mDo88hRmb3qJ5LaMs7uPIs5zsgGLzVq7PM09zl0rn3TtdQ13Jex1jMUrhKo4Ljek5RXfWdkvKgc3XZTL4vQXZjthrgljvOGdFJiTSQZe92qpORUP2tZxk8E50+pQESHDvpieR/fBjZsTgdaipnZDfWr91srDjT81hXyi91+Tr70Jwc6iCX9Hkqd1N3zr2QjOhOOMnAe4DRnM6Yep6GwB/gEiqh6D/2VgAAAABJRU5ErkJggg=="></span>주만사<small>서울시 공유기업</small></div>
+<h1>비어 있는 주차면,<br>한 달에 얼마가<br>될까요?</h1>
+<p>동네와 면수만 넣으면 예상 수익이 바로 나옵니다. 판매와 정산은 주만사가 맡고, 건물은 빈 시간만 정하면 됩니다.</p>
+<div class="hero-actions">
+<a class="btn btn-yellow" href="#calc" data-go="calc">우리 건물 수익 계산하기</a>
+<a class="btn btn-line" href="#form" data-go="form">상담 신청</a>
+</div>
+</div>
+</header>
+<main class="wrap">
+
+<section id="calc">
+<h2>예상 월 수익 계산</h2>
+<p class="lede">입력하는 대로 바로 계산됩니다.</p>
+<div class="panel">
+<label for="cRegion" style="margin-top:0">동네 <span class="req">필수</span></label>
+<div class="ac">
+<input id="cRegion" autocomplete="off" placeholder="성수동, 가산동, 강남구처럼 입력">
+<ul id="cList" role="listbox" aria-label="동네 검색 결과"></ul>
+</div>
+<div class="two">
+<div><label for="cSpaces">개방할 면수 <span class="req">필수</span></label>
+<input id="cSpaces" type="number" min="1" inputmode="numeric" placeholder="예: 20"></div>
+<div><label for="cUsage">건물 유형</label>
+<select id="cUsage">
+<option value="">선택</option><option>지식산업센터</option><option>오피스·업무빌딩</option>
+<option>상가·근린생활</option><option>호텔</option><option>종교시설</option><option>학교</option>
+<option>병원</option><option>아파트</option><option>빌라·다세대</option><option>나대지·노외</option><option>기타</option>
+</select></div>
+</div>
+<label>비는 시간대 <span class="req" style="color:var(--muted)">여러 개 선택 가능</span></label>
+<div class="chips" id="cIdle">
+<label class="on"><input type="checkbox" value="day24" checked>24시간</label>
+<label><input type="checkbox" value="weekday">평일 낮</label>
+<label><input type="checkbox" value="night">평일 야간</label>
+<label><input type="checkbox" value="weekend">주말·공휴일</label>
+</div>
+<div class="result" aria-live="polite">
+<p class="hint" id="cHint">동네와 면수를 입력하면 여기에 예상 수익이 나옵니다.</p>
+<div id="cRes" hidden>
+<p class="r-cond" id="cTitle"></p>
+<div class="r-num" id="cMonthly"></div>
+<div class="facts">
+<div>1년이면<strong id="cYear"></strong></div>
+<div>같은 구에서 판매 중<strong id="cNear"></strong></div>
+</div>
+<p class="subsidy" id="cSubsidy"></p>
+<a class="btn btn-blue" href="#form" id="cGo">이 조건으로 무료 진단 신청하기</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<h2>주만사는 이런 회사입니다</h2>
+<p class="lede">주차장이 없는 곳에 주차장을 만드는 공유주차 플랫폼입니다. 건물은 주차면과 조건만 정하고, 판매·CS·정산은 주만사가 전부 맡습니다.</p>
+<div class="board" id="stats"></div>
+<h3 class="roles-title">주만사 운영팀이 매출을 관리합니다</h3>
+<div class="roles">
+<div><b>오픈 집중 노출</b><p>오픈 후 1개월 앱 메인 배너·팝업 노출 (주만사 부담)</p></div>
+<div><b>채널 마케팅</b><p>네이버 검색광고·블로그·SNS로 지역 수요 유입</p></div>
+<div><b>상시 모니터링</b><p>권종별 판매량 상시 확인</p></div>
+<div><b>즉시 개선</b><p>부진한 권종은 가격·시간대를 바로 조정</p></div>
+<div><b>편리한 정산</b><p>매월 정산내역서와 함께 빠르고 정확하게 정산해드립니다.</p></div>
+</div>
+</section>
+
+<section id="form">
+<h2>무료 수익 진단 신청</h2>
+<p class="lede">남겨주신 내용을 보고 담당자가 직접 연락드립니다.</p>
+<div class="panel">
+<form id="leadForm" novalidate>
+<div class="prefill" id="prefill"></div>
+<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+<label style="margin-top:0">어떤 입장이신가요? <span class="req">필수</span></label>
+<div class="chips">
+<label><input type="radio" name="type" value="건물주">건물주</label>
+<label><input type="radio" name="type" value="관리단·관리소장">관리단·관리소장</label>
+<label><input type="radio" name="type" value="PM·AM사">PM·AM사</label>
+<label><input type="radio" name="type" value="주차장 운영사">주차장 운영사</label>
+<label><input type="radio" name="type" value="개인 호스트">개인(내 자리)</label>
+</div>
+<label for="building">건물·주차장 이름</label>
+<input id="building" name="building" placeholder="예: ○○ 지식산업센터">
+<label for="address">주소 <span class="req">필수</span></label>
+<input id="address" name="address" placeholder="예: 서울특별시 성동구 아차산로 49">
+<div class="two">
+<div><label for="usage">건물 용도</label>
+<select id="usage" name="usage">
+<option value="">선택</option><option>지식산업센터</option><option>오피스·업무빌딩</option>
+<option>상가·근린생활</option><option>호텔</option><option>종교시설</option><option>학교</option>
+<option>병원</option><option>아파트</option><option>빌라·다세대</option><option>나대지·노외</option><option>기타</option>
+</select></div>
+<div><label for="spaces">개방할 면수 <span class="req">필수</span></label>
+<input id="spaces" name="spaces" type="number" min="1" inputmode="numeric" placeholder="예: 20"></div>
+</div>
+<label>주로 비는 시간대</label>
+<div class="chips" id="fIdle">
+<label><input type="checkbox" value="24시간 일부 면">24시간</label>
+<label><input type="checkbox" value="평일 낮">평일 낮</label>
+<label><input type="checkbox" value="평일 야간">평일 야간</label>
+<label><input type="checkbox" value="주말·공휴일">주말·공휴일</label>
+<label><input type="checkbox" value="잘 모름">잘 모름</label>
+</div>
+<label for="operation">지금 주차장 운영 방식</label>
+<select id="operation" name="operation">
+<option value="">선택</option><option>직접 관리</option><option>주차 운영사 위탁</option>
+<option>무인(차단기)</option><option>차단기 없음</option><option>잘 모름</option>
+</select>
+<div class="two">
+<div><label for="name">성함 <span class="req">필수</span></label><input id="name" name="name" autocomplete="name"></div>
+<div><label for="phone">연락처 <span class="req">필수</span></label><input id="phone" name="phone" type="tel" inputmode="tel" placeholder="010-0000-0000" autocomplete="tel"></div>
+</div>
+<div>
+<div><label for="contactTime">연락 편한 시간</label>
+<select id="contactTime" name="contactTime"><option value="">상관없음</option><option>오전</option><option>점심 이후</option><option>오후 늦게</option><option>문자 먼저</option></select></div>
+</div>
+<label for="message">더 알려주실 내용</label>
+<textarea id="message" name="message" rows="3" placeholder="예: 주말에 30면 정도 비어요. 입주사 차량과 동선이 겹치지 않았으면 합니다."></textarea>
+<label class="agree"><input type="checkbox" id="agree"><span>상담을 위한 개인정보 수집·이용에 동의합니다. (필수)</span></label>
+<details><summary>개인정보 수집·이용 안내</summary>
+수집 항목: 성함, 연락처, 이메일, 건물 주소와 입력 정보 / 목적: 주차공유 상담과 안내 / 보유 기간: 상담 종료 후 1년 또는 삭제 요청 시까지. 동의하지 않을 수 있으며, 이 경우 상담이 어렵습니다.
+</details>
+<button type="submit" class="btn btn-blue submit" id="submitBtn">무료 진단 신청하기</button>
+<div class="err" id="err" role="alert"></div>
+</form>
+<div class="done" id="done">
+<h3>신청이 접수됐습니다</h3>
+<p class="lede" style="margin:0">담당자가 확인하고 연락드리겠습니다. 급하시면 <a href="tel:010-4629-8738">010-4629-8738</a>로 전화 주세요.</p>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap sig">
+<div>
+<p class="sig-name"><b>안민찬</b> | 사업실 PD</p>
+<p class="sig-co">주식회사 주만사</p>
+<p class="sig-meta"><b>A:</b> 서울특별시 광진구 동일로 120 신원빌딩 4층</p>
+<p class="sig-meta"><span class="nb"><b>E:</b> <a href="mailto:amc@zoomansa.com">amc@zoomansa.com</a></span> <span class="nb"><b>H:</b> <a href="http://www.zoomansa.com/" target="_blank" rel="noopener">http://www.zoomansa.com/</a></span></p>
+</div>
+<img class="sig-z" alt="주만사" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEsAAABKCAMAAADEzFl9AAAAwFBMVEXg5eejrdMrMVpaahxUYKJjoUwtIiq106I1TiYcUVphkTqloQfPvADe1AM5nG94iMCEumolecAhmLUjistEMVoAAAD+6AB5WKEfquIhreUqS51OoTRMnjL9/f3cyQBvUZQiq9BKNmMlcLkdotetxBEIGCMScJUwUZtlSogMTGcalsgjbrc4VKONmskaGAkOWXcWgaw3TqCVhgDC2rAJIjIakb9zsVepzZUcJRIaKUgSZIYrJwBaQXhIWKVhokCRuRu5y9+/AAAAQHRSTlP///////////////////////////8A////////////////////////////////////////////////////////BE+NBQAAAstJREFUeNqt1wl3ojAQAOBYr1p77ZFCjEcrgkeVanW1q1X//7/akAAGhMGJO09e1CffywyTIISGsfu876KjeXc4VMtfIUHU4Hdf0PFw5G3Og6OtW+UXA0o50uK3sXVvQHV5W4+70Po0oAbRnNS8OC9LyzealXLWm2X9Wb7l0uoaJ8iXHRlV+UlYO8MExSukOh2Z6hcxqNYgLNI6ojobeS0J/iIOomtXjy0SfKwSdLkG8cWLUwySbPMD2hqcGqGetMS8mmYJitDqJduV0Bo2wVOD1tPXkRo0QzQQRT3Lb4JebaKbIR74RmjLtfymLNfjg0GtzkOt7R22GfQheuuHe04Z2QwZ1m28F/rFC+kIpMcf9T1abGJwzx45z5tX9fEnTVpwNF7zgzEXY33YQExcirA+GLNZfCQH5sQ/u8Ra2ZC1wlhjKEHnRF1gzROzSM1rov+y0BozwHIoxoITpBhrnq60Pq8JxVhzBlhpCrbGDLAcirEwtSqw5hmTyW6GQmvMAMuhGAubIGB52QVXbx0XY3kMsHKoHAver/LKkml5uU0VJEgxlscAKy/BbMsswUzLs1ELB7I8BlhAghmWxwALptKWca3OLS/7VmMX1+rM8hhgFSSYsuZQgn+Kb36atc29nYrjAkqzGjZg2RRjba9MULO20F+Gy6jIarz++vHe7/fDIzn0K2/58dtPWeP3RSs/rIIY6f/lhgDUWljF8R1bNxDVsi6JUWhF1HRqTCmM0L/qnCfxNEJKU4MEVdQCSxVrFj6gLgypYGLElSfto6e3mUmCMoSlqlWKHysrhpR1Q4lK8fS0WzKkRF8oa59l4ShRMKKuHOmcFczCW8NUvaaGlPVGiWqvKUlNC01ZrugvdW6FXEn1tL5vVWalJ+MEg5YI1uPQdA2mWlXuE/+B6tWi/et6SttXNWlvQI2S945VazgUhauMesgYfdei/f4fUFsFq+QNVpQAAAAASUVORK5CYII=">
+</div>
+<div class="sig-bar"></div>
+</footer>
+<script>
+
+var TRUST = {
+stats: [
+['12개', '서울 자치구 공유주차 협력'],
+['25,000+', '공유 주차면'],
+['120만+', '이용자'],
+['30,000+', '월 이용 건']
+]
+};
+
+var CALC = {
+tiers: [
+{ name: '1급지', regions: ['서울 강남구','서울 서초구','서울 중구','서울 종로구','서울 성동구','서울 영등포구','서울 용산구','서울 마포구'], monthly: 250000, weekendDay: 10000 },
+{ name: '2급지', regions: ['서울','경기 성남시','경기 과천시'], monthly: 150000, weekendDay: 7000 },
+{ name: '3급지', regions: ['경기','인천','부산'], monthly: 100000, weekendDay: 5000 },
+{ name: '4급지', regions: [], monthly: 70000, weekendDay: 4000 }
+],
+weekdayRatio: 0.55,  // 평일 낮만 판매 시 24시간 월정기 대비
+nightRatio: 0.5,     // 평일 야간만 판매 시
+weekendDays: 8.6,    // 월 평균 주말·공휴일 수
+sellLow: 0.4,        // 판매율(보수)
+sellHigh: 0.7,       // 판매율(기대)
+payoutRatio: 1,      // 1이면 '판매액' 기준 표시, 0.8 등으로 넣으면 '정산액' 기준 표시
+bonus: 500000        // 예상 수익에 일괄로 더하는 월 금액(원)
+};
+var REGIONS=(function(raw){var o={gu:{},dong:[]};raw.split('|').forEach(function(l){var p=l.split(' ');o.gu[p[0]+' '+p[1]]=+p[2];if(p[3])p[3].split(',').forEach(function(x){var m=x.match(/^(.*?)(\d+)$/);if(m)o.dong.push([p[0],p[1],m[1],+m[2]]);});});return o;})("강원 강릉시 13 강문동1,교동1,남문동1,명주동1,송정동1,옥천동2,임당동2,입암동2,주문진읍1,홍제동1|강원 고성군 1 토성면1|강원 동해시 0 |강원 삼척시 1 남양동1|강원 속초시 10 교동4,금호동1,대포동1,조양동3,청학동1|강원 양양군 3 강현면1,서면1,양양읍1|강원 원주시 10 단계동1,단구동1,무실동1,반곡동2,우산동2,일산동1,태장동2|강원 철원군 2 동송읍2|강원 춘천시 9 교동1,소양로3가1,온의동2,운교동2,퇴계동1,효자동1,후평동1|강원 홍천군 2 홍천읍2|경기 가평군 2 가평읍1,청평면1|경기 고양시 66 대자동1,대장동1,대화동1,덕은동2,덕이동1,도내동1,백석동2,삼송동3,성사동1,식사동4,오금동2,원당동1,원흥동2,일산동2,장항동19,주엽동4,중산동1,중앙로1,지축동2,탄현동4,토당동2,행신동2,향동동2,화정동5|경기 과천시 3 갈현동1,별양동2|경기 광명시 19 광명동7,소하동1,일직동6,철산동5|경기 광주시 10 경안동5,삼동1,송정동2,장지동1,초월읍1|경기 구리시 13 갈매동4,교문동2,수택동4,인창동3|경기 군포시 11 금정동3,당동3,대야미동1,부곡동3,산본동1|경기 김포시 34 고촌읍1,구래동18,대곶면1,양촌읍3,운양동2,장기동3,통진읍1,풍무동5|경기 남양주시 32 다산동12,별내동6,오남읍1,와부읍1,조안면1,진접읍7,평내동1,호평동1,화도읍2|경기 부천시 122 고강동9,괴안동16,내동2,도당동1,삼정동1,상동8,소사동1,소사본동4,송내동5,심곡동19,심곡본동11,약대동3,여월동2,역곡동13,옥길동2,원미동3,원종동3,중동13,춘의동6|경기 성남시 49 구미동2,금곡동1,금광동1,금토동2,단대동1,백현동3,산성동2,삼평동6,서현동6,성남동2,수내동5,시흥동3,야탑동1,양지동2,운중동1,정자동1,창곡동4,태평동1,판교동4,판교역로1|경기 수원시 86 고등동3,곡반정동3,교동1,구운동3,권선동5,금곡동7,당수동1,망포동2,매산로1가2,매산로2가3,매탄동2,서둔동6,세류동3,송죽동1,영통동6,오목천동1,우만동2,원천동2,율전동2,이목동1,이의동5,인계동14,장안동1,조원동1,중동1,지동1,천천동1,탑동1,파장동1,하동1,호매실동3|경기 시흥시 24 거북섬중앙로1,능곡동2,대야동3,배곧동2,신천동2,은행동3,장곡동2,장곡로1,정왕동8|경기 안산시 35 고잔동19,대부북동1,본오동2,사동1,성곡동5,성포동1,신길동2,와동2,초지동2|경기 안성시 10 공도읍2,당왕동2,대덕면1,석정동1,양성면1,영동1,인지동2|경기 안양시 46 관양동14,박달동2,비산동3,석수동2,안양동21,평촌동2,호계동2|경기 양주시 18 광사동1,광적면2,덕계동2,덕정동1,만송동1,봉양동1,옥정동8,은현면1,회정동1|경기 양평군 5 양서면2,양평읍1,옥천면1,용문면1|경기 여주시 4 천송동1,홍문동3|경기 연천군 1 청산면1|경기 오산시 12 궐동3,금암동1,내삼미동1,벌음동1,수청동1,오산동2,원동3|경기 용인시 36 고림동1,고매동1,구갈동2,김량장동4,남사읍2,동천동2,마북동5,보정동2,상현동5,역북동1,죽전동3,중동3,청덕동1,포곡읍2,풍덕천동2|경기 의왕시 8 고천동2,삼동4,오전동1,왕곡동1|경기 의정부시 44 가능동15,고산동1,금오동2,녹양동1,민락동6,산곡동2,신곡동1,용현동3,의정부동8,장암동1,호원동4|경기 이천시 5 대월면1,부발읍2,증포동1,창전동1|경기 파주시 26 금촌동6,동패동2,목동동3,문산읍2,상지석동1,아동동1,야당동5,와동동4,월롱면1,조리읍1|경기 평택시 47 고덕동9,고덕면4,동삭동2,모곡동2,비전동13,서정동1,신장동1,용이동3,장당동3,지산동1,지제동2,진위면1,칠원동1,팽성읍2,합정동2|경기 포천시 9 설운동2,소흘읍1,신북면1,신읍동3,일동면2|경기 하남시 25 감이동1,감일동1,덕풍동3,망월동17,풍산동3|경기 화성시 57 기산동1,남양읍1,능동2,목동2,반송동9,반월동1,병점동4,봉담읍1,산척동3,새솔동4,석우동3,송동2,여울동4,영천동6,오산동4,장지동1,팔탄면1,향남읍8|경남 거제시 3 고현동1,아주동1,양정동1|경남 김해시 6 내동1,부곡동1,삼방동1,외동2,전하동1|경남 사천시 1 사남면1|경남 양산시 5 동면1,물금읍2,북정동1,중부동1|경남 진주시 3 상대동1,수정동1,인사동1|경남 창원시 8 북면1,상남동2,석전동1,여좌동1,장천동1,중앙동2가1,합성동1|경북 경산시 1 조영동1|경북 경주시 4 노동동1,사정동1,용강동2|경북 구미시 4 광평동1,송정동1,오태동1,인의동1|경북 김천시 1 신음동1|경북 문경시 1 점촌동1|경북 상주시 0 |경북 영천시 1 오수동1|경북 울릉군 1 울릉읍1|경북 칠곡군 1 왜관읍1|경북 포항시 11 대신동1,대흥동1,두호동1,상원동1,양덕동1,용흥동1,이동1,죽도동3,흥해읍1|광주 광산구 21 산정동1,선암동2,소촌동1,송정동3,수완동2,쌍암동2,오선동1,우산동2,운남동1,월계동1,월곡동1,장덕동1,하남동3|광주 남구 3 봉선동1,주월동1,진월동1|광주 동구 9 금남로3가1,금동1,대인동2,운림동1,지산동1,충장로4가1,충장로5가1,학동1|광주 목포시 1 용해동1|광주 보성군 1 벌교읍1|광주 북구 13 동림동2,두암동1,본촌동1,신안동2,용봉동1,운암동1,일곡동2,임동1,중흥동2|광주 서구 9 농성동1,쌍촌동2,양동1,치평동4,화정동1|대구 남구 5 대명동4,봉덕동1|대구 달서구 8 감삼동1,대곡동1,본리동1,송현동1,월성동1,이곡동3|대구 달성군 5 다사읍4,현풍읍1|대구 동구 5 동호동1,신서동1,신천동2,효목동1|대구 북구 5 대현동1,동천동1,산격동1,칠성동2가1,침산동1|대구 수성구 10 두산동2,만촌동3,범어동3,중동1,지산동1|대구 중구 5 공평동1,남산동3,동문동1|대전 대덕구 0 |대전 동구 0 |대전 서구 16 관저동1,괴정동1,도안동2,둔산동7,만년동1,변동1,복수동1,탄방동2|대전 유성구 16 도룡동1,문지동1,반석동1,봉명동6,상대동2,신성동1,장대동1,지족동2,화암동1|대전 중구 7 대사동1,대흥동1,선화동1,오류동1,유천동1,태평동2|부산 강서구 4 대저1동1,명지동3|부산 금정구 25 구서동3,금성동1,남산동5,부곡동6,서동3,장전동6,청룡동1|부산 기장군 13 기장읍11,정관읍2|부산 남구 21 감만동2,대연동13,문현동3,용호동3|부산 동구 7 범일동1,수정동1,좌천동2,초량동3|부산 동래구 15 명륜동2,안락동5,온천동7,칠산동1|부산 부산진구 19 가야동2,개금동2,부전동5,양정동4,전포동6|부산 북구 16 구포동7,덕천동2,만덕동3,화명동4|부산 사상구 8 감전동1,괘법동2,덕포동1,모라동1,엄궁동1,주례동2|부산 사하구 13 감천동1,괴정동4,당리동2,신평동1,장림동2,하단동3|부산 서구 2 서대신동1가1,서대신동2가1|부산 수영구 27 광안동20,남천동2,망미동2,민락동2,수영동1|부산 연제구 21 거제동7,연산동14|부산 영도구 9 동삼동3,봉래동3가1,신선동1가1,영선동1가1,청학동3|부산 중구 7 남포동5가1,남포동6가1,동광동2가1,보수동3가1,영주동1,중앙동3가1,중앙동4가1|부산 해운대구 12 반송동2,반여동1,송정동1,우동4,좌동1,중동3|서울 강남구 220 개포동3,논현동43,대치동28,도곡동5,삼성동32,세곡동1,수서동1,신사동20,압구정로1,역삼동68,자곡동5,청담동12,학동로1|서울 강동구 69 강일동2,길동10,둔촌동2,명일동2,성내동20,암사동13,천호동20|서울 강북구 68 미아동19,번동9,수유동37,우이동3|서울 강서구 116 가양동2,공항동3,내발산동3,등촌동9,마곡동31,방화동9,염창동5,화곡동54|서울 관악구 110 남현동2,봉천동50,신림동58|서울 광진구 75 구의동16,군자동5,능동2,자양동21,중곡동18,화양동13|서울 구로구 57 가리봉동1,개봉동9,고척동4,구로동22,궁동7,신도림동5,오류동7,온수동1,항동1|서울 금천구 131 가산동20,독산동64,시흥동47|서울 노원구 30 공릉동7,상계동7,월계동9,중계동5,하계동2|서울 도봉구 34 도봉동2,방학동7,쌍문동15,창동10|서울 동대문구 64 답십리동4,신설동2,용두동7,이문동6,장안동15,전농동12,제기동9,청량리동5,휘경동4|서울 동작구 81 노량진동6,대방동6,사당동26,상도1동2,상도동32,신대방동6,흑석동3|서울 마포구 88 공덕동4,노고산동4,당인동1,대흥동2,도화동2,동교동8,마포동2,망원동5,상수동3,상암동5,서교동17,성산동11,신공덕동2,아현동1,연남동5,창전동1,토정동1,합정동14|서울 서대문구 60 남가좌동4,냉천동1,대현동6,미근동1,북가좌동10,북아현동3,연희동8,창천동10,충정로2가3,충정로3가5,홍은동6,홍제동3|서울 서초구 107 남부순환로1,반포동5,방배동36,서초동52,신원동2,양재동3,우면동3,잠원동5|서울 성동구 58 금호동3가1,금호동4가1,도선동2,마장동2,성수동1가10,성수동2가24,송정동2,용답동5,응봉동1,하왕십리동1,행당동7,홍익동2|서울 성북구 44 길음동3,돈암동1,동선동2가1,동소문동4가1,동소문동5가1,보문동1가1,보문동2가1,보문동5가1,삼선동4가3,삼선동5가1,상월곡동1,석관동4,안암동5가3,장위동3,정릉동7,종암동4,하월곡동8|서울 송파구 184 가락동23,거여동8,마천동6,마천로1,문정동22,방이동24,삼전동16,석촌동33,송파동20,신천동3,오금동3,잠실동17,장지동3,풍납동5|서울 양천구 47 목동16,신월동10,신정동21|서울 영등포구 79 당산동1,당산동1가3,당산동2가4,당산동3가3,당산동4가3,당산동5가1,당산동6가2,대림동5,도림동5,문래동2가1,문래동3가1,문래동5가1,문래동6가1,신길동13,양평동1가1,양평동3가1,양평동4가3,양평동5가1,양평동6가1,여의도동15,영등포동2,영등포동1가3,영등포동2가2,영등포동3가1,영등포동4가2,영등포동7가2,영등포동8가1|서울 용산구 48 갈월동2,남영동1,동자동5,문배동1,신계동1,용문동3,원효로1가2,원효로2가1,원효로3가1,이촌동1,이태원동6,청파동1가3,청파동3가1,한강로2가6,한강로3가1,한남동5,효창동1,후암동7|서울 은평구 166 갈현동14,구산동16,녹번동16,대조동22,불광동39,수색동1,신사동14,역촌동16,응암동15,증산동6,진관동7|서울 종로구 60 견지동1,경운동1,공평동4,관수동1,관철동1,관훈동1,구기동2,낙원동3,내수동1,내자동1,동숭동1,명륜1가3,명륜2가1,명륜3가1,수송동1,숭인동10,신문로1가1,신영동2,안국동1,연지동1,와룡동1,운니동1,원남동1,원서동1,이화동4,인사동1,인의동1,종로6가1,중학동1,창신동5,청진동2,평창동2,효자동1|서울 중구 75 광희동1가1,남대문로1,남대문로5가10,남창동1,다동3,만리동1가1,명동2가1,봉래동1가2,북창동1,삼각동2,서소문동2,소공동1,수표동2,순화동4,신당동8,쌍림동1,오장동1,을지로2가1,을지로5가1,의주로1가1,저동2가1,정동2,중림동4,청계천로1,초동3,충무로1가1,충무로3가1,충무로4가2,태평로2가1,필동1가1,필동2가3,필동3가1,황학동4,회현동1가2,회현동2가1,흥인동2|서울 중랑구 62 망우동3,면목동22,묵동10,상봉동20,신내동2,중화동5|울산 남구 19 달동5,삼산동7,신정동6,야음동1|울산 동구 2 전하동1,화정동1|울산 북구 2 매곡동1,산하동1|울산 울주군 8 범서읍1,삼남읍3,언양읍1,온양읍3|울산 중구 3 성남동1,옥교동1,태화동1|인천 강화군 1 양도면1|인천 계양구 33 계산동1,귤현동4,동양동10,박촌동2,병방동2,상야동2,작전동3,장기동6,효성동3|인천 남동구 49 간석동8,구월동13,남촌동1,논현동9,만수동11,서창동4,장수동3|인천 동구 4 만석동2,송림동1,화수동1|인천 미추홀구 62 도화동16,문학동1,석정로1,숭의동19,용현동6,주안동18,학익동1|인천 부평구 89 갈산동3,부개동12,부평동43,산곡동3,삼산동4,십정동14,일신동3,청천동7|인천 서구 100 가좌동3,검암동16,경서동10,공촌동1,당하동11,대곡동1,마전동10,불로동3,석남동10,신현동3,심곡동7,연희동2,오류동4,왕길동1,원당동6,원창동3,청라동9|인천 서해구 9 가좌동1,석남동1,심곡동1,원창동1,청라동5|인천 연수구 24 동춘동1,송도동20,옥련동3|인천 영종구 0 |인천 옹진군 1 연평면1|인천 제물포구 2 율목동1,화평동1|인천 중구 24 내동1,북성동2가1,신흥동3가1,운남동2,운서동3,율목동1,전동1,중산동12,항동7가2|전남 담양군 1 월산면1|전남 목포시 2 상동1,죽교동1|전남 순천시 0 |전남 신안군 1 흑산면1|전남 영광군 1 법성면1|전남 완도군 1 약산면1|전남 장흥군 0 |전북 군산시 1 오식도동1|전북 김제시 1 요촌동1|전북 익산시 6 모현동1가1,송학동1,어양동1,오산면1,창인동1가1,창인동2가1|전북 전주시 17 고사동2,삼천동1가2,서신동3,송천동1가1,인후동1가1,전동1,중화산동2가1,평화동2가1,효자동1가1,효자동2가1,효자동3가3|제주 서귀포시 2 강정동1,서귀동1|제주 제주시 33 건입동1,구좌읍1,노형동8,도두일동1,도련일동1,삼도이동1,삼도일동1,애월읍4,연동2,오라삼동1,오라일동1,용담삼동1,이도이동4,이호이동1,일도이동1,일도일동1,조천읍1,한림읍1,화북일동1|충남 공주시 4 산성동1,신관동3|충남 당진시 5 수청동2,읍내동3|충남 서산시 1 읍내동1|충남 아산시 9 모종동1,배방읍4,탕정면4|충남 천안시 15 두정동1,백석동1,봉명동1,부대동1,불당동5,성성동1,신부동1,쌍용동1,원성동1,청당동2|충남 청양군 1 청양읍1|충남 홍성군 1 홍성읍1|충북 음성군 1 맹동면1|충북 제천시 2 명동1,장락동1|충북 증평군 1 증평읍1|충북 진천군 1 진천읍1|충북 청주시 25 가경동2,남문로1가1,남이면1,미평동1,복대동2,봉명동1,북문로3가1,비하동1,산남동4,서문동3,송절동2,수곡동1,오송읍1,오창읍1,용담동1,용암동2|충북 충주시 2 연수동1,용산동1"); 
+var API = "https://script.google.com/macros/s/AKfycbzZiHqvLBEW2ij9evX4H7sL27eiX2muqQAKOEHkpUxq21cOu73N-2KSZiVoPCPggz4M/exec";
+var SRC = ((new URLSearchParams(location.search)).get("src") || (new URLSearchParams(location.search)).get("utm_source") || "direct").slice(0,40);
+
+function $(id){return document.getElementById(id);}
+function won(n){ if(n>=10000){ var m=Math.round(n/10000); return m.toLocaleString('ko-KR')+'만원'; } return Math.round(n).toLocaleString('ko-KR')+'원'; }
+function wonRange(a,b){ var A=Math.round(a/10000), B=Math.round(b/10000); if(B<1) return won(b); if(A===B) return A.toLocaleString('ko-KR')+'만원'; return A.toLocaleString('ko-KR')+' ~ '+B.toLocaleString('ko-KR')+'만원'; }
+document.addEventListener('click',function(e){ var a=e.target.closest('[data-go]'); if(!a) return; e.preventDefault(); $(a.getAttribute('data-go')).scrollIntoView({behavior:'smooth'}); });
+document.querySelectorAll('.chips').forEach(function(g){ g.addEventListener('change',function(){ g.querySelectorAll('label').forEach(function(l){ l.classList.toggle('on', l.querySelector('input').checked); }); }); });
+
+$('stats').innerHTML = TRUST.stats.map(function(s){return '<div><strong>'+s[0]+'</strong><span>'+s[1]+'</span></div>';}).join('');
+
+var IDX = [];
+Object.keys(REGIONS.gu).forEach(function(k){ var p=k.split(' '); IDX.push({label:k, sido:p[0], gu:p[1], dong:'', n:REGIONS.gu[k], key:(k).replace(/\s/g,'')}); });
+REGIONS.dong.forEach(function(d){ IDX.push({label:d[0]+' '+d[1]+' '+d[2], sido:d[0], gu:d[1], dong:d[2], n:d[3], key:(d[0]+d[1]+d[2]).replace(/\s/g,'')}); });
+var picked = null, actIdx = -1, shown = [];
+function search(q){
+q = q.replace(/\s/g,''); if(!q) return [];
+var a = IDX.filter(function(r){ return r.key.indexOf(q)>=0 || (r.dong && r.dong.indexOf(q)===0); });
+a.sort(function(x,y){ var xs=(x.dong||x.gu).indexOf(q)===0?0:1, ys=(y.dong||y.gu).indexOf(q)===0?0:1; if(xs!==ys) return xs-ys; return y.n-x.n; });
+return a.slice(0,8);
+}
+function renderList(){
+var ul=$('cList');
+if(!shown.length){ ul.classList.remove('show'); return; }
+ul.innerHTML = shown.map(function(r,i){ return '<li data-i="'+i+'" class="'+(i===actIdx?'act':'')+'">'+r.label+(r.n?'<small>판매중 '+r.n+'곳</small>':'')+'</li>'; }).join('');
+ul.classList.add('show');
+}
+function pick(r){ picked=r; $('cRegion').value=r.label; shown=[]; renderList(); calc(); }
+$('cRegion').addEventListener('input',function(){ picked=null; shown=search(this.value); actIdx=-1; renderList(); if(shown.length===1 || (shown[0] && shown[0].key===this.value.replace(/\s/g,''))) picked=shown[0]; calc(); });
+$('cRegion').addEventListener('keydown',function(e){
+if(!shown.length) return;
+if(e.key==='ArrowDown'){ actIdx=Math.min(actIdx+1,shown.length-1); renderList(); e.preventDefault(); }
+else if(e.key==='ArrowUp'){ actIdx=Math.max(actIdx-1,0); renderList(); e.preventDefault(); }
+else if(e.key==='Enter'){ pick(shown[Math.max(actIdx,0)]); e.preventDefault(); }
+});
+$('cList').addEventListener('mousedown',function(e){ var li=e.target.closest('li'); if(li){ e.preventDefault(); pick(shown[+li.getAttribute('data-i')]); } });
+$('cRegion').addEventListener('blur',function(){ setTimeout(function(){ if(!picked && shown.length) pick(shown[0]); shown=[]; renderList(); },150); });
+
+function tierOf(sido,gu){
+var full=sido+' '+gu, i, t;
+for(i=0;i<CALC.tiers.length;i++){ t=CALC.tiers[i]; if(t.regions.indexOf(full)>=0) return t; }
+for(i=0;i<CALC.tiers.length;i++){ t=CALC.tiers[i]; if(t.regions.indexOf(sido)>=0) return t; }
+return CALC.tiers[CALC.tiers.length-1];
+}
+function idleSel(){ return Array.prototype.map.call(document.querySelectorAll('#cIdle input:checked'),function(i){return i.value;}); }
+// 24시간 선택 시 나머지 해제, 나머지 선택 시 24시간 해제
+$('cIdle').addEventListener('change',function(e){
+var v=e.target.value, boxes=this.querySelectorAll('input');
+if(e.target.checked){ boxes.forEach(function(b){ if(v==='day24'? b.value!=='day24' : b.value==='day24') b.checked=false; }); }
+this.querySelectorAll('label').forEach(function(l){ l.classList.toggle('on', l.querySelector('input').checked); });
+calc();
+});
+$('cSpaces').addEventListener('input',calc);
+$('cUsage').addEventListener('change',calc);
+var LAST = null;
+function drawLot(n){
+var cap=Math.min(n,60), s=Math.round(cap*CALC.sellLow), m=Math.max(0,Math.round(cap*CALC.sellHigh)-s), h='';
+for(var i=0;i<cap;i++) h+='<i class="'+(i<s?'s':(i<s+m?'m':''))+'"></i>';
+$('cLot').innerHTML=h;
+}
+function calc(){
+var n=parseInt($('cSpaces').value,10), sel=idleSel();
+if(!picked || !n || n<1 || !sel.length){ $('cRes').hidden=true; $('cHint').hidden=false;
+$('cHint').textContent = !picked ? '동네를 입력하고 목록에서 골라 주세요.' : (!n ? '개방 가능 면수를 입력해 주세요.' : '비는 시간대를 하나 이상 골라 주세요.'); LAST=null; return; }
+var t=tierOf(picked.sido,picked.gu), perSpace=0, parts=[];
+if(sel.indexOf('day24')>=0){ perSpace=t.monthly; parts.push('24시간 월정기'); }
+else {
+if(sel.indexOf('weekday')>=0){ perSpace+=t.monthly*CALC.weekdayRatio; parts.push('평일 낮'); }
+if(sel.indexOf('night')>=0){ perSpace+=t.monthly*CALC.nightRatio; parts.push('평일 야간'); }
+if(sel.indexOf('weekend')>=0){ perSpace+=t.weekendDay*CALC.weekendDays; parts.push('주말·공휴일'); }
+perSpace=Math.min(perSpace,t.monthly);
+}
+var bonus=(CALC.bonus!=null?CALC.bonus:500000);
+var UM={'지식산업센터':1.15,'오피스·업무빌딩':1.2,'상가·근린생활':1.1,'호텔':1.25,'종교시설':0.9,'학교':0.85,'병원':1.05,'아파트':0.9,'빌라·다세대':0.8,'나대지·노외':1,'기타':1};
+var um=UM[$('cUsage').value]||1;
+var lo=perSpace*n*CALC.sellLow*CALC.payoutRatio*um+bonus, hi=perSpace*n*CALC.sellHigh*CALC.payoutRatio*um+bonus;
+var label = CALC.payoutRatio<1 ? '예상 월 정산액' : '예상 월 판매액';
+$('cHint').hidden=true; $('cRes').hidden=false;
+$('cTitle').textContent = picked.label+', '+n+'면, '+parts.join('+')+' 판매 시 '+label;
+$('cMonthly').innerHTML = wonRange(lo,hi).replace(' ~ ','~')+'<span>매달</span>';
+$('cYear').textContent = wonRange(lo*12,hi*12);
+var near = picked.dong ? (REGIONS.gu[picked.sido+' '+picked.gu]||0) : picked.n;
+$('cNear').textContent = near ? (picked.gu+' '+near.toLocaleString('ko-KR')+'곳') : '첫 현장이 됩니다';
+var sub;
+if(picked.sido!=='서울') sub='지자체별 공유주차 지원 기준이 다릅니다. 상담 시 해당 지역 공모를 함께 확인해 드립니다.';
+else if(n>=5) sub='<b>구청 지원금 대상일 수 있습니다.</b> 2년 이상 개방하면 시설개선비 최대 3천만원(전일 개방) 또는 운영수익 보전을 받을 수 있습니다.';
+else if(n>=3) sub='<b>소규모 지원 대상일 수 있습니다.</b> 면당 최대 200만원의 시설개선비가 지원됩니다.';
+else sub='3면 미만은 지원사업 대상이 아니지만 시간권 판매는 가능합니다.';
+$('cSubsidy').innerHTML = sub;
+LAST = { region:picked.label, spaces:n, idle:parts.join(', '), usage:$('cUsage').value, est:wonRange(lo,hi)+'/월' };
+}
+
+fetch(API+"?action=config").then(function(r){return r.json();}).then(function(c){ if(c && c.tiers && c.tiers.length){ CALC=c; calc(); } }).catch(function(){});
+
+$('cGo').addEventListener('click',function(e){
+e.preventDefault();
+if(LAST){
+$('spaces').value=LAST.spaces;
+if(!$('address').value) $('address').value=LAST.region+' ';
+if(LAST.usage) $('usage').value=LAST.usage;
+var map={'24시간 월정기':'24시간 일부 면','평일 낮':'평일 낮','평일 야간':'평일 야간','주말·공휴일':'주말·공휴일'};
+document.querySelectorAll('#fIdle input').forEach(function(b){ b.checked = LAST.idle.split(', ').some(function(p){return map[p]===b.value;}); });
+document.querySelectorAll('#fIdle label').forEach(function(l){ l.classList.toggle('on', l.querySelector('input').checked); });
+$('prefill').innerHTML='계산 결과(<b>'+LAST.est+'</b>)가 함께 전달됩니다. 상세 주소와 연락처만 채워 주세요.';
+$('prefill').classList.add('show');
+}
+$('form').scrollIntoView({behavior:'smooth'});
+});
+
+$('leadForm').addEventListener('submit',function(e){
+e.preventDefault();
+var f=e.target, err=$('err'), btn=$('submitBtn');
+var type=(f.querySelector('input[name=type]:checked')||{}).value||'';
+var idle=Array.prototype.map.call(f.querySelectorAll('#fIdle input:checked'),function(i){return i.value;}).join(', ');
+var data={ website:f.website.value, type:type, building:f.building.value, address:f.address.value, usage:f.usage.value,
+spaces:f.spaces.value, idle:idle, operation:f.operation.value, name:f.name.value, phone:f.phone.value, email:'',
+contactTime:f.contactTime.value, message:f.message.value, agree:$('agree').checked, src:SRC,
+estimate: LAST ? (LAST.region+' '+LAST.spaces+'면 '+LAST.idle+' → '+LAST.est) : '' };
+var miss=[];
+if(!type) miss.push('입장'); if(!data.address.trim()) miss.push('주소'); if(!data.spaces) miss.push('면수');
+if(!data.name.trim()) miss.push('성함'); if(data.phone.replace(/\D/g,'').length<9) miss.push('연락처');
+if(miss.length){ err.textContent=miss.join(', ')+'을(를) 확인해 주세요.'; return; }
+if(!data.agree){ err.textContent='개인정보 수집·이용에 동의해 주세요.'; return; }
+err.textContent=''; btn.disabled=true; btn.textContent='접수 중…';
+var ok=function(){ f.style.display='none'; $('done').classList.add('show'); };
+var fail=function(e2){ btn.disabled=false; btn.textContent='무료 진단 신청하기'; err.textContent=(e2&&e2.message)||'잠시 후 다시 시도해 주세요.'; };
+fetch(API,{method:'POST',body:JSON.stringify(data)}).then(function(r){return r.json();}).then(function(res){ if(res && res.ok) ok(); else fail({message:(res&&res.error)||''}); }).catch(function(){ fail(); });
+});
+</script>
+</body>
+</html>
