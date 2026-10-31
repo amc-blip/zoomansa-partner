@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zoomansa-partner.pages.dev/sitemap.xml
